@@ -22,6 +22,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: docker build my_website
+      - name: build & push my_website image
         run: |
+          docker login --username=aminovish2 --password=${{ secrets.TCDOCKERCRED }}
           docker build . -t my_website
+          docker push aminovish2/my_website
